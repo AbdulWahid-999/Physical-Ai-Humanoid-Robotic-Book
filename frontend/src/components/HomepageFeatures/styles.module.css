@@ -1,0 +1,53 @@
+.features {
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.featureRow {
+  display: flex;
+  flex-wrap: wrap;
+  /* Removed justify-content: center to align to start */
+  gap: 1.5rem;
+}
+
+.featureCard {
+  flex-basis: calc(33.333% - 1rem); /* 3 cards per row with gap */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background-color: var(--custom-feature-card-background-color);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  color: var(--custom-feature-card-text-color);
+}
+
+.featureCard:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.featureCard .button {
+  margin-top: auto;
+}
+
+.featureImage {
+  height: 150px;
+  width: 150px;
+  margin-bottom: 1rem;
+}
+
+.featureDescription {
+  min-height: 100px;
+}
+
+@media screen and (max-width: 996px) {
+  .featureCard {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}

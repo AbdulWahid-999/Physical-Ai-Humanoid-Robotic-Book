@@ -1,0 +1,88 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #fff;
+  --ifm-color-primary-dark: #29784c;
+  --ifm-color-primary-darker: #277148;
+  --ifm-color-primary-darkest: #032b43;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-code-font-size: 95%;
+  --ifm-font-family-base: 'Poppins', sans-serif;
+  --ifm-h1-font-size: 2.8rem;
+  --ifm-h2-font-size: 2.2rem;
+  --ifm-heading-font-family: 'Poppins', sans-serif;
+  h1, h2, h3, h4, h5, h6 {
+    color: #16db93; /* Heading color in light theme */
+  }
+  --ifm-spacing-vertical: 1.5rem;
+  --ifm-spacing-horizontal: 1.5rem;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-footer-background-color: #032b43;
+  --ifm-button-color: #fff; /* Text color for light theme buttons */
+  --ifm-button-background-color: #032b43; /* Background color for light theme buttons */
+  --ifm-button-border-color: #032b43; /* Border color for light theme buttons */
+  --ifm-color-secondary: #16db93; /* Secondary color for light theme, often used for buttons */
+  --ifm-color-secondary-dark: #ffffea; 
+  --ifm-color-secondary-darker: #0000;
+  --ifm-color-secondary-darkest: #0000;
+  --ifm-color-secondary-light: #cccccc;
+  --ifm-color-secondary-lighter: #eeeeee;
+  --ifm-color-secondary-lightest: #ffffff;
+  --custom-feature-card-background-color: #032b43;
+  --custom-feature-card-text-color: #fff;
+}
+
+:root button.button--secondary:hover {
+  background-color: #218380;
+  color: white;
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #39FF14;
+  --ifm-color-primary-dark: #21af90;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-footer-background-color: #00B300;
+  --ifm-button-color: #fff; /* Text color for dark theme buttons */
+  --ifm-button-background-color: #032b43; /* Background color for dark theme buttons */
+  --ifm-button-border-color: #16db93; /* Border color for dark theme buttons */
+  --ifm-color-secondary: #00FFFF; /* Neon blue for dark theme secondary button */
+  --ifm-color-secondary-dark: #00cccc;
+  --ifm-color-secondary-darker: #009999;
+  --ifm-color-secondary-darkest: #006666;
+  --ifm-color-secondary-light: #33ffff;
+  --ifm-color-secondary-lighter: #66ffff;
+  --ifm-color-secondary-lightest: #99ffff;
+  --custom-feature-card-background-color: #032b43;
+  --custom-feature-card-text-color: #fff;
+}
+
+/* Custom CSS to remove hover effects */
+.navbar__brand:hover {
+  text-decoration: none;
+  color: inherit;
+  background-color: initial;
+}
+
+.navbar__item.navbar__link:hover[href*="github.com"] {
+  color: inherit; /* Prevent color change on hover */
+  background-color: initial; /* Prevent background change on hover */
+  text-decoration: none; /* Prevent underline on hover */
+}
+
+/* Attempt to remove hover for theme toggle - this might need adjustment */
+.toggleButton_src-theme-Navbar_ColorModeToggle-module:hover {
+  background-color: initial;
+}

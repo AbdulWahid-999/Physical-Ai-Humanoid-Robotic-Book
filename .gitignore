@@ -1,0 +1,30 @@
+# Gitignore for Textbook Generation Project
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+dist/
+*.egg-info/
+
+# JavaScript/TypeScript
+node_modules/
+dist/
+build/
+*.log
+.env*
+
+# Docusaurus
+.docusaurus/
+build/
+
+# FastAPI
+.pytest_cache/
+.vscode/
+
+# Universal
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
