@@ -5,6 +5,9 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
+import React from 'react';
+import Chatkit from '@site/src/components/Chatkit'; // Import the Chatkit component
+
 
 import styles from './index.module.css';
 
@@ -24,13 +27,25 @@ function HomepageHeader() {
             Start Reading
           </Link>
         </div>
+         <div>
+    
+    </div>
       </div>
     </header>
   );
 }
 
+
+
+
 export default function Home(): ReactNode {
   const {siteConfig} = useDocusaurusContext();
+  const chatkitConfig = {
+    apiEndpoint: 'http://localhost:8000/api', // Placeholder
+    websocketEndpoint: 'ws://localhost:8000/ws', // Placeholder
+    projectId: 'docusaurus-chat', // Placeholder
+    userId: 'user-123', // Placeholder
+  };
   return (
     <Layout
       title={`Hello from ${siteConfig.title}`}
@@ -38,6 +53,7 @@ export default function Home(): ReactNode {
       <HomepageHeader />
       <main>
         <HomepageFeatures />
+        <Chatkit config={chatkitConfig} /> {/* Render the Chatkit component */}
       </main>
     </Layout>
   );
