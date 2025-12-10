@@ -13,7 +13,7 @@ const config: Config = {
   url: 'https://muhammad-abdul-wahid.github.io/', // Corrected to user's GitHub Pages domain
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/hackathon-1/', // Corrected to the project's repository name
+  baseUrl: '/', // Corrected to the project's repository name
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
