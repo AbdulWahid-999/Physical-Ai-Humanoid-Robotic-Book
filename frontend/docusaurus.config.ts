@@ -10,26 +10,20 @@ const config: Config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://your-github-username.github.io/',
+  url: 'https://muhammad-abdul-wahid.github.io/', // Corrected to user's GitHub Pages domain
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/hackathon-1/',
+  baseUrl: '/hackathon-1/', // Corrected to the project's repository name
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
   },
 
-  // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
-
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'Muhammad-Abdul-Wahid', // User's GitHub org/user name
+  projectName: 'hackathon-1', // User's repo name
 
   onBrokenLinks: 'throw',
 
@@ -76,7 +70,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/Muhammad-Abdul-Wahid/hackathon-1/tree/main/frontend/', // Updated to correct repository path
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -92,10 +86,10 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'Physical AI & Humanoid Robotics Docs',
+      title: 'Physical Ai & Humanoid Robotics',
       logo: {
-        alt: 'My Site Logo',
-        src: 'img/logo.svg',
+        alt: 'Logo',
+        src: "/img/robot-44.svg",
       },
       items: [
         {
@@ -104,9 +98,9 @@ const config: Config = {
           position: 'left',
           label: 'Docs',
         },
-        {to: '/chatbot', label: 'Chatbot', position: 'left'}, // Added Chatbot link
+
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/AbdulWahid-999/Physical-Ai-Humanoid-Robotic-Book', // Updated to correct repository
           label: 'GitHub',
           position: 'right',
         },
@@ -120,7 +114,7 @@ const config: Config = {
           items: [
             {
               label: 'GitHub',
-              href: 'https://github.com/Muhammad-Abdul-Wahid/hackathon-1', // Updated GitHub link
+              href: 'https://github.com/AbdulWahid-999/Physical-Ai-Humanoid-Robotic-Book', // Updated GitHub link
             },
           ],
         },

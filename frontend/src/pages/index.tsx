@@ -6,7 +6,7 @@ import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
 import React from 'react';
-import Chatkit from '@site/src/components/Chatkit'; // Import the Chatkit component
+ // Import the Chatkit component
 
 
 import styles from './index.module.css';
@@ -53,7 +53,7 @@ export default function Home(): ReactNode {
       <HomepageHeader />
       <main>
         <HomepageFeatures />
-        <Chatkit config={chatkitConfig} /> {/* Render the Chatkit component */}
+        
       </main>
     </Layout>
   );

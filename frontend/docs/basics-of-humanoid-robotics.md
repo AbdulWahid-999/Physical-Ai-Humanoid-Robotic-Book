@@ -1,4 +1,4 @@
-# Basics of Humanoid Robotics
+# Basics of Humanoid Robotics 
 
 Humanoid robotics is a specialized field within robotics focused on creating robots that resemble the human body in form and/or function. These robots are designed to interact with tools and environments built for humans, making them suitable for a wide range of applications.
 

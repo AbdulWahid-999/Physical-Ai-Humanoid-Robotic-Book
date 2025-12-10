@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
 import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 type FeatureItem = {
   title: string;
@@ -51,10 +52,11 @@ const FeatureList: FeatureItem[] = [
 ];
 
 function Feature({title, image, description, link}: FeatureItem) {
+  const imageUrl = useBaseUrl(image);
   return (
     <div className={clsx('col col--4', styles.featureCard)}>
       <div className="text--center">
-        <img src={image} className={styles.featureImage} alt={title} />
+        <img src={imageUrl} className={styles.featureImage} alt={title} />
       </div>
       <div className="text--center padding-horiz--md">
         <Heading as="h3">{title}</Heading>

@@ -1,0 +1,244 @@
+openapi: 3.0.0
+info:
+  title: User Profile Service API
+  version: 1.0.0
+  description: API for managing user authentication via Better-Auth and personalization profiles.
+
+servers:
+  - url: /api/v1
+    description: Base URL for the User Profile Service API
+
+paths:
+  /auth/callback:
+    post:
+      summary: Better-Auth Callback for Signup/Signin
+      operationId: authCallback
+      requestBody:
+        description: Callback data from Better-Auth, potentially including initial personalization data.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                betterAuthCode:
+                  type: string
+                  description: Authorization code from Better-Auth.
+                personalizationData:
+                  $ref: '#/components/schemas/PersonalizationProfileInput'
+              required:
+                - betterAuthCode
+      responses:
+        '200':
+          description: Successful authentication and profile processing.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfileResponse'
+        '400':
+          description: Invalid request or Better-Auth code.
+        '500':
+          description: Internal server error.
+
+  /profile:
+    get:
+      summary: Retrieve User Profile
+      operationId: getUserProfile
+      security:
+        - betterAuth: [] # Assumes Better-Auth provides an authentication mechanism for API calls
+      responses:
+        '200':
+          description: User profile retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfileResponse'
+        '401':
+          description: Unauthorized.
+        '404':
+          description: User profile not found.
+        '500':
+          description: Internal server error.
+
+    put:
+      summary: Update User Profile
+      operationId: updateUserProfile
+      security:
+        - betterAuth: []
+      requestBody:
+        description: Updated personalization profile data.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PersonalizationProfileInput'
+      responses:
+        '200':
+          description: User profile updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfileResponse'
+        '400':
+          description: Invalid input data.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: User profile not found.
+        '500':
+          description: Internal server error.
+
+  /profile/consent:
+    delete:
+      summary: Revoke Profile Consent / Delete Profile
+      operationId: revokeProfileConsent
+      security:
+        - betterAuth: []
+      responses:
+        '204':
+          description: User profile consent revoked and data soft-deleted.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: User profile not found.
+        '500':
+          description: Internal server error.
+
+components:
+  securitySchemes:
+    betterAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT # Assuming JWTs issued by Better-Auth
+  schemas:
+    PersonalizationProfileInput:
+      type: object
+      properties:
+        programmingLanguages:
+          type: array
+          items:
+            type: string
+          description: List of primary programming languages.
+          example: ["Python", "JavaScript"]
+        yearsOfExperience:
+          type: string
+          enum: ["0-1 year", "1-3 years", "3-5 years", "5+ years"]
+          description: User's programming experience level.
+          example: "1-3 years"
+        primaryOs:
+          type: string
+          enum: ["Windows", "macOS", "Linux"]
+          description: User's primary operating system.
+          example: "macOS"
+        primaryIde:
+          type: string
+          description: User's primary development environment or IDE.
+          example: "VS Code"
+        cloudExperience:
+          type: string
+          enum: ["None", "Beginner", "Intermediate", "Advanced"]
+          description: User's familiarity level with cloud/deployment.
+          example: "Intermediate"
+        hardwareProfileCpuFamily:
+          type: string
+          description: User's CPU family.
+          example: "Intel Core i7"
+        hardwareProfileRamGb:
+          type: integer
+          format: int32
+          description: User's RAM size in Gigabytes.
+          example: 16
+        hardwareProfileGpuPresent:
+          type: boolean
+          description: Indicates if a GPU is present.
+          example: true
+        hardwareProfileGpuModel:
+          type: string
+          nullable: true
+          description: Model of the GPU if present.
+          example: "NVIDIA GeForce RTX 3080"
+        preferredLearningFormat:
+          type: array
+          items:
+            type: string
+            enum: ["Reading", "Video", "Hands-on", "Mixed"]
+          description: User's preferred learning style.
+          example: ["Video", "Hands-on"]
+        accessibilityNeeds:
+          type: string
+          nullable: true
+          description: Any stated accessibility requirements or preferences.
+          example: "High contrast mode"
+      required:
+        - programmingLanguages
+        - yearsOfExperience
+        - primaryOs
+        - primaryIde
+        - cloudExperience
+        - hardwareProfileCpuFamily
+        - hardwareProfileRamGb
+        - hardwareProfileGpuPresent
+        - preferredLearningFormat
+
+    UserProfileResponse:
+      type: object
+      properties:
+        betterAuthUserId:
+          type: string
+          description: Unique identifier from Better-Auth.
+        programmingLanguages:
+          type: array
+          items:
+            type: string
+        yearsOfExperience:
+          type: string
+          enum: ["0-1 year", "1-3 years", "3-5 years", "5+ years"]
+        primaryOs:
+          type: string
+          enum: ["Windows", "macOS", "Linux"]
+        primaryIde:
+          type: string
+        cloudExperience:
+          type: string
+          enum: ["None", "Beginner", "Intermediate", "Advanced"]
+        hardwareProfileCpuFamily:
+          type: string
+        hardwareProfileRamGb:
+          type: integer
+          format: int32
+        hardwareProfileGpuPresent:
+          type: boolean
+        hardwareProfileGpuModel:
+          type: string
+          nullable: true
+        preferredLearningFormat:
+          type: array
+          items:
+            type: string
+            enum: ["Reading", "Video", "Hands-on", "Mixed"]
+        accessibilityNeeds:
+          type: string
+          nullable: true
+        isConsentRevoked:
+          type: boolean
+          description: Flag indicating if the user has revoked consent.
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+        - betterAuthUserId
+        - programmingLanguages
+        - yearsOfExperience
+        - primaryOs
+        - primaryIde
+        - cloudExperience
+        - hardwareProfileCpuFamily
+        - hardwareProfileRamGb
+        - hardwareProfileGpuPresent
+        - preferredLearningFormat
+        - isConsentRevoked
+        - createdAt
+        - updatedAt
